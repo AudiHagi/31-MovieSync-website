@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import MovieContentCard from "./components/MovieContentCard/MovieContentCard";
+import TvContentCard from "./components/TvContentCard/TvContentCard";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navigation from "./components/Navigation/Navigation";
+import { Container } from "react-bootstrap";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="NavigationBar">
+        <Navigation />
+      </div>
+      <Container className="Content">
+        <Routes>
+          <Route path="/" element={<MovieContentCard />} />
+          <Route path="/movie" element={<MovieContentCard />} />
+          <Route path="/tv" element={<TvContentCard />} />
+        </Routes>
+      </Container>
+    </BrowserRouter>
   );
 }
 
